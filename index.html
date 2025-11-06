@@ -3,10 +3,37 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galaxy Login – Planet Ring</title>
+  <title>LOGIN PAGE - XLILNYX</title>
+  <meta name="description" content="WEBSITE CPANEL XLILNYX" />
+  <meta property="og:title" content="LOGIN PAGE - XLILNYX" />
+  <meta property="og:description" content="AUTHOR XLILNYX OFFICIAL" />
+  <meta property="og:image" content="https://files.catbox.moe/5bwkpb.jpg" />
+  <meta property="og:url" content="https://xlilnyx.vercel.app" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LOGIN PAGE - XLILNYX" />
+  <meta name="twitter:description" content="WEBSITE CPANEL XLILNYX" />
+  <meta name="twitter:image" content="https://files.catbox.moe/5bwkpb.jpg" />
+  <link rel="icon" type="image/png" href="https://files.catbox.moe/5bwkpb.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    /* ---------- 1. RESET & GALAXY BACKGROUND ---------- */
+  
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+  html,body{
+  height:100%;
+  width:100%;
+  overflow:hidden;
+  }
+  
+  body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#fff;
+  }
+  
     *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
     html,body{height:100%}
     body{
@@ -14,7 +41,7 @@
       overflow:hidden;
       color:#fff;
     }
-    /* galaxy */
+
     .galaxy{
       position:fixed;inset:0;z-index:-3;
       background: radial-gradient(ellipse at 60% 40%, #0b0b2b 0%, #020515 50%, #000 100%);
@@ -28,6 +55,7 @@
       filter:blur(60px);animation:drift 60s linear infinite alternate;
     }
     @keyframes drift{0%{transform:translate(0,0) rotate(0deg) scale(1)}100%{transform:translate(-5%,5%) rotate(360deg) scale(1.15)}}
+
     .stars{position:absolute;width:100%;height:100%}
     .stars::before,.stars::after{content:'';position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;box-shadow:15vw 20vh 0 1px #fff,30vw 60vh 0 0px #fff,55vw 40vh 0 1px #fff,70vw 90vh 0 0px #fff,85vw 10vh 0 1px #fff,10vw 80vh 0 0px #fff,25vw 35vh 0 1px #fff,40vw 70vh 0 0px #fff,60vw 15vh 0 1px #fff,75vw 50vh 0 0px #fff,90vw 65vh 0 1px #fff,5vw 45vh 0 0px #fff;animation:twinkle 4s infinite}
     .stars::after{width:3px;height:3px;box-shadow:20vw 30vh 0 0px #fff,50vw 85vh 0 1px #fff,65vw 25vh 0 0px #fff,80vw 55vh 0 1px #fff,35vw 95vh 0 0px #fff;animation-duration:6s;animation-delay:-2s}
@@ -35,13 +63,12 @@
     .shooting{position:absolute;width:120px;height:2px;background:linear-gradient(90deg,transparent 0%,#fff 50%,transparent 100%);top:20%;left:100%;transform:rotate(-30deg);animation:shoot 8s linear infinite;opacity:0}
     @keyframes shoot{0%{transform:translateX(0) translateY(0) rotate(-30deg);opacity:0}5%{opacity:1}95%{opacity:1}100%{transform:translateX(-120vw) translateY(50vh) rotate(-30deg);opacity:0}}
 
-    /* ---------- 2. PLANET + RING ---------- */
     .planet-wrapper{
       position:relative;
       width:320px;height:320px;
       display:flex;justify-content:center;align-items:center;
     }
-    /* ring luar */
+    
     .ring{
       position:absolute;
       width:100%;height:100%;
@@ -50,7 +77,7 @@
       animation:orbit 8s linear infinite;
     }
     @keyframes orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-    /* lingkaran login (planet) */
+
     .planet{
       width:280px;height:280px;
       background:rgba(17,17,17,.55);
@@ -69,77 +96,163 @@
     .loading{display:none;margin-top:8px;font-size:.85rem;color:#888;animation:pulse 1s infinite}
     @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
     #errorBox{display:none;margin-top:8px;padding:8px;background:rgba(255,0,0,.08);border-radius:12px;color:#ff5555;font-size:.8rem;text-align:center}
-    .admin-link{margin-top:1rem;font-size:.75rem;color:#888}
-    .admin-link a{color:#fff;text-decoration:none;font-weight:500}
-    .admin-link a:hover{text-decoration:underline}
+    
+    .admin-link {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;                   
+    }
+    
+    .admin-link a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    }
+    
+    .admin-link a:hover {
+    text-decoration: underline;
+    }
+
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99;
+    }
+    
+    .popup-box {
+      background: rgba(20,20,40,0.8);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(138,43,226,0.4);
+      animation: popIn 0.5s ease forwards;
+    }
+    
+    @keyframes popIn { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+    .popup-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 6px #8a2be2;
+    }
+    
+    .popup-box button {
+      background: linear-gradient(90deg,#8a2be2,#4b0082);
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 15px;
+      padding: 10px 25px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(138,43,226,0.5);
+      transition: all 0.25s;
+    }
+    
+    .popup-box button:hover {
+      background: linear-gradient(90deg,#b066ff,#6600ff);
+      box-shadow: 0 0 15px rgba(138,43,226,0.8);
+    }
+    
   </style>
 </head>
 <body>
-  <!-- Galaxy background -->
   <div class="galaxy">
     <div class="nebula"></div>
     <div class="stars"></div>
     <div class="shooting"></div>
   </div>
 
-  <!-- Planet + Ring -->
   <div class="planet-wrapper">
     <div class="ring"></div>
     <div class="planet">
-      <h2>Login</h2>
+      <h2>LOGIN</h2>
       <form id="loginForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Masuk</button>
-        <div class="loading">⏳ Sedang memeriksa...</div>
+        <button type="submit">CONFIRMASI</button>
+        <div class="loading">INITIATED DATABASE....</div>
         <div id="errorBox"></div>
       </form>
       <div class="admin-link">
-        Anda admin? <a href="/admin/">Klik disini</a>
+      <a href="/admin/">ACCES ADMIN</a>
+      <a href="https://t.me/xlilnyx" target="_blank">CONTACT</a>
       </div>
     </div>
   </div>
+  
+  <video id="bgMusic" loop preload="auto" style="display:none;">
+  <source src="https://files.catbox.moe/kuhcf2.mp4" type="video/mp4">
+  </video>
+  
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <h3>WELCOME TO MY WEBSITE</h3>
+      <p style="margin-bottom:1.2rem;color:#bbb;">THANKS TOO ALL PARTNER LEZARD</p>
+      <button id="startBtn">CONFIRM</button>
+    </div>
+  </div>
 
-  <!-- JS tetap sama -->
   <script>
-    const form=document.getElementById("loginForm");
-    const loading=document.querySelector(".loading");
-    const errorBox=document.getElementById("errorBox");
+    const popup = document.getElementById('popup');
+    const startBtn = document.getElementById('startBtn');
+    const bgMusic = document.getElementById('bgMusic');
 
-    form.addEventListener("submit",async(e)=>{
+    startBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch(() => console.log("Autoplay dicegah oleh browser."));
+    });
+
+    const form = document.getElementById("loginForm");
+    const loading = document.querySelector(".loading");
+    const errorBox = document.getElementById("errorBox");
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      errorBox.style.display="none";
-      loading.style.display="block";
+      errorBox.style.display = "none";
+      loading.style.display = "block";
 
-      const username=document.getElementById("username").value.trim();
-      const password=document.getElementById("password").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-      try{
-        const res=await fetch("/api/login",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({username,password})
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ username, password })
         });
 
-        const clone=res.clone();
+        const clone = res.clone();
         let data;
-        try{data=await res.json()}catch{
-          const text=await clone.text();
+        try { data = await res.json(); }
+        catch {
+          const text = await clone.text();
           throw new Error(`Server tidak mengembalikan JSON valid: ${text}`);
         }
 
-        if(res.ok&&data.success){
-          localStorage.setItem("username",username);
-          window.location.href="/user/reseller/index.html";
-        }else{
-          errorBox.textContent=data.message||"Username atau password salah.";
-          errorBox.style.display="block";
+        if (res.ok && data.success) {
+          localStorage.setItem("username", username);
+          window.location.href = "/user/reseller/index.html";
+        } else {
+          errorBox.textContent = data.message || "Username atau password salah.";
+          errorBox.style.display = "block";
         }
-      }catch(err){
-        errorBox.textContent="Terjadi kesalahan: "+err.message;
-        errorBox.style.display="block";
-      }finally{
-        loading.style.display="none";
+      } catch (err) {
+        errorBox.textContent = "Terjadi kesalahan: " + err.message;
+        errorBox.style.display = "block";
+      } finally {
+        loading.style.display = "none";
       }
     });
   </script>
